@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question importante 💖</title>
+    <link rel="icon" type="image/png" href="saint-valentin_003.jpg">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        .credit {
+            position: fixed;
+            bottom: 15px;
+            right: 15px;
+            font-family: 'Pacifico', cursive;
+            font-size: 1.3rem;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px 18px;
+            border-radius: 25px;
+            box-shadow: 0 5px 20px rgba(194, 24, 91, 0.2);
+            background: linear-gradient(135deg, rgba(255, 111, 166, 0.95), rgba(255, 181, 210, 0.95));
+            color: white;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+            animation: fade-in 1.5s ease-out 2s both;
+        }
+        
+        @keyframes fade-in {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Modal prénom */
+        .modal-name {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            animation: fade-in 0.4s ease-out;
+        }
+        
+        .modal-content {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(255, 245, 250, 0.98));
+            padding: 40px 35px;
+            border-radius: 20px;
+            box-shadow: 0 25px 60px rgba(194, 24, 91, 0.25);
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            animation: bounce-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        @keyframes bounce-in {
+            0% { transform: scale(0.7); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        .modal-content h2 {
+            color: #c2185b;
+            font-size: 1.8rem;
+            margin: 0 0 10px 0;
+        }
+        
+        .modal-content p {
+            color: #888;
+            margin: 0 0 25px 0;
+            font-size: 1rem;
+        }
+        
+        .modal-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ffb6d2;
+            border-radius: 10px;
+            font-size: 1rem;
+            text-align: center;
+            margin-bottom: 20px;
+            font-family: inherit;
+            transition: border-color 0.3s;
+            box-sizing: border-box;
+        }
+        
+        .modal-input:focus {
+            outline: none;
+            border-color: #ff6fa6;
+            box-shadow: 0 0 10px rgba(255, 111, 166, 0.2);
+        }
+        
+        .modal-btn {
+            background: linear-gradient(135deg, #ff6fa6, #ff85b8);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(255, 111, 166, 0.2);
+            width: 100%;
+        }
+        
+        .modal-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(255, 111, 166, 0.3);
+        }
+        
+        .modal-btn:active {
+            transform: scale(0.98);
+        }
+        
+        .title-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .title-thumbnail {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            object-fit: cover;
+            box-shadow: 0 4px 15px rgba(194, 24, 91, 0.2);
+            animation: slide-in 0.8s ease-out;
+        }
+        
+        @keyframes slide-in {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-hearts"></div>
+    
+    <!-- Modal prénom -->
+    <div class="modal-name" id="nameModal">
+        <div class="modal-content">
+            <h2>✨ Un instant ✨</h2>
+            <p>Quel est ton prénom ?</p>
+            <input type="text" class="modal-input" id="nameInput" placeholder="Ton prénom..." autocomplete="off">
+            <button class="modal-btn" id="nameSubmit">Continuer 💕</button>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="image-bg"></div>
+        
+        <div class="content-box">
+            <div class="title-wrapper">
+                <h1 class="title-main">Veux-tu être mon/ma Valentin(e) ? 💕</h1>
+            </div>
+            <p class="subtitle">Une question importante qui changera tout...</p>
+            
+            <div class="buttons-container">
+                <button id="yesBtn" class="btn btn-yes">Oui 💖</button>
+                <button id="noBtn" class="btn btn-no">Non 💔</button>
+            </div>
+            
+            <div class="counter-no" id="counterNo"></div>
+        </div>
+    </div>
+    
+    <div id="overlay" class="overlay">
+        <div class="celebration">
+            <h2 class="celebration-title">Oui ! 💘</h2>
+            <div class="confetti-container" id="confetti"></div>
+        </div>
+    </div>
+    
+    <a href="about.html" class="credit" aria-label="À propos de HyūgoSan">By HyūgoSan ✨</a>
+    
+    <script src="script.js"></script>
+</body>
+</html>
