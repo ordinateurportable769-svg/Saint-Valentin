@@ -221,7 +221,20 @@
         </div>
     </div>
     
-    <a href="about.html" class="credit" aria-label="À propos de HyūgoSan">By HyūgoSan ✨</a>
+    <a href="about.html" class="credit" aria-label="À propos de HyūgoSan" id="creditLink">By HyūgoSan ✨</a>
+    
+    <!-- Flèches indicatrices pour la personne élue -->
+    <div id="arrowIndicator" style="display: none; position: fixed; bottom: 60px; right: 30px; z-index: 200; animation: bounce-arrow 1s infinite;">
+      <div style="font-size: 2.5rem; filter: drop-shadow(0 3px 5px rgba(0,0,0,0.3));">👇</div>
+      <div style="font-size: 0.9rem; color: white; background: rgba(194, 24, 91, 0.9); padding: 5px 12px; border-radius: 15px; margin-top: 5px; font-weight: 600; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.2);">Clique ici !</div>
+    </div>
+    
+    <style>
+      @keyframes bounce-arrow {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+      }
+    </style>
     
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -236,6 +249,12 @@
                 <p>Tu viens de rendre cette journée, et ${nom}, ma vie entière, tellement plus belle ✨</p>
                 <p>À partir de maintenant, chaque jour sera une célébration de notre amour 💕</p>
             `;
+            
+            // Vérifie si c'est la personne élue et affiche les flèches indicatrices
+            const isElue = localStorage.getItem('valentineElue') === 'true';
+            if (isElue) {
+                document.getElementById('arrowIndicator').style.display = 'block';
+            }
             
             // Crée des cœurs flottants
             function createFloatingHearts() {
