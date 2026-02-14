@@ -28,6 +28,30 @@
     <div class="message">Merci d'avoir visité ce petit site rose et adorable — j'espère qu'il a fait sourire la personne à qui tu l'as montré 💕</div>
     <div class="small">Créé avec amour le 05 Février 2026</div>
     <a class="back" href="index.html">Retour à la question</a>
+    
+    <!-- Bouton secret pour la personne élue -->
+    <div id="secretButtonContainer" style="display: none; margin-top: 20px;">
+      <p style="color: #c2185b; font-size: 0.95rem; margin-bottom: 10px;">✨ Une surprise t'attend... ✨</p>
+      <a id="secretButton" class="back" href="special.html" style="background: linear-gradient(135deg, #ff1493, #ff69b4); animation: pulse-glow 2s infinite;">🎁 Découvrir ton cadeau 🎁</a>
+    </div>
+    
+    <style>
+      @keyframes pulse-glow {
+        0%, 100% { box-shadow: 0 10px 30px rgba(255, 20, 147, 0.4); transform: scale(1); }
+        50% { box-shadow: 0 15px 40px rgba(255, 20, 147, 0.6); transform: scale(1.05); }
+      }
+    </style>
+    
+    <script>
+      // Vérifie si c'est la personne élue et affiche le bouton secret
+      document.addEventListener('DOMContentLoaded', () => {
+        const isElue = localStorage.getItem('valentineElue') === 'true';
+        if (isElue) {
+          document.getElementById('secretButtonContainer').style.display = 'block';
+        }
+      });
+    </script>
+    
     <div class="credit-note">Ask Full_Service</div>
   </div>
 </body>
