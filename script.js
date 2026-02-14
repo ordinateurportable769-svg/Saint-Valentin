@@ -22,6 +22,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const nom = nameInput.value.trim();
         if (nom) {
             localStorage.setItem('valentineNom', nom);
+            // Vérifie si c'est la personne élue pour la chasse au trésor
+            const prenomLower = nom.toLowerCase();
+            const isElue = ['thyphène', 'thyphene'].includes(prenomLower);
+            localStorage.setItem('valentineElue', isElue ? 'true' : 'false');
             nameModal.style.display = 'none';
             nameInput.value = '';
         }
@@ -32,6 +36,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const nom = nameInput.value.trim();
             if (nom) {
                 localStorage.setItem('valentineNom', nom);
+                // Vérifie si c'est la personne élue pour la chasse au trésor
+                const prenomLower = nom.toLowerCase();
+                const isElue = ['thyphène', 'thyphene', 'aimée', 'aimee'].includes(prenomLower);
+                localStorage.setItem('valentineElue', isElue ? 'true' : 'false');
                 nameModal.style.display = 'none';
                 nameInput.value = '';
             }
